@@ -26,6 +26,8 @@ public class Booking {
 
     private LocalDateTime bookedAt;
 
+    private LocalDateTime expiresAt;
+
     @OneToMany(mappedBy = "booking",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
@@ -45,6 +47,7 @@ public class Booking {
         this.totalAmount = totalAmount;
         this.status = BookingStatus.PENDING_PAYMENT;
         this.bookedAt = LocalDateTime.now();
+        this.expiresAt = this.bookedAt.plusSeconds(90);
     }
 
     public Long getId() {
@@ -77,6 +80,10 @@ public class Booking {
 
     public LocalDateTime getBookedAt() {
         return bookedAt;
+    }
+
+    public LocalDateTime getExpiresAt() {
+        return expiresAt;
     }
 
     public List<SeatBooking> getSeatBookings() {
