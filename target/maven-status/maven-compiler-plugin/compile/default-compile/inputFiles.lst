@@ -1,5 +1,6 @@
 D:\TicketBookingSystem\src\main\java\com\jayanto\ticketbooking\config\CorsConfig.java
 D:\TicketBookingSystem\src\main\java\com\jayanto\ticketbooking\config\DataSeeder.java
+D:\TicketBookingSystem\src\main\java\com\jayanto\ticketbooking\config\OpenApiConfig.java
 D:\TicketBookingSystem\src\main\java\com\jayanto\ticketbooking\controller\AuthController.java
 D:\TicketBookingSystem\src\main\java\com\jayanto\ticketbooking\controller\BookingController.java
 D:\TicketBookingSystem\src\main\java\com\jayanto\ticketbooking\controller\MovieController.java
