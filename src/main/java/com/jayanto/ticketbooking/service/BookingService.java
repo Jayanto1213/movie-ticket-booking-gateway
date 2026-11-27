@@ -20,17 +20,20 @@ public class BookingService {
     private final ShowRepository shows;
     private final SeatBookingRepository seatBookings;
     private final SeatLockRepository seatLocks;
+    private final PaymentRepository payments;
 
     public BookingService(
             BookingRepository bookings,
             ShowRepository shows,
             SeatBookingRepository seatBookings,
-            SeatLockRepository seatLocks) {
+            SeatLockRepository seatLocks,
+            PaymentRepository payments) {
 
         this.bookings = bookings;
         this.shows = shows;
         this.seatBookings = seatBookings;
         this.seatLocks = seatLocks;
+        this.payments = payments;
     }
 
     @Transactional
@@ -152,6 +155,13 @@ public class BookingService {
                     HttpStatus.CONFLICT,
                     "Booking already cancelled");
         }
+
+        payments.findByBooking_Id(booking.getId())
+                .ifPresent(payment -> {
+                    if (payment.getStatus() == PaymentStatus.PENDING) {
+                        payment.setStatus(PaymentStatus.FAILED);
+                    }
+                });
 
         booking.getSeatBookings().clear();
         booking.setStatus(BookingStatus.CANCELLED);

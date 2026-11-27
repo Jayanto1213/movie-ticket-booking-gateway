@@ -2,6 +2,7 @@
 package com.jayanto.ticketbooking.model;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -15,6 +16,7 @@ public class Payment {
 
     @OneToOne(optional = false)
     @JoinColumn(name = "booking_id", nullable = false, unique = true)
+    @JsonIgnoreProperties({"seatBookings"})
     private Booking booking;
 
     @Column(nullable = false, unique = true)

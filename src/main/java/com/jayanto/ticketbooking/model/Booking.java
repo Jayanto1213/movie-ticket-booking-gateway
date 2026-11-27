@@ -47,7 +47,7 @@ public class Booking {
         this.totalAmount = totalAmount;
         this.status = BookingStatus.PENDING_PAYMENT;
         this.bookedAt = LocalDateTime.now();
-        this.expiresAt = this.bookedAt.plusSeconds(90);
+        this.expiresAt = this.bookedAt.plusMinutes(10);
     }
 
     public Long getId() {

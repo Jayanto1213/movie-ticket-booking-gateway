@@ -1,6 +1,7 @@
 
 package com.jayanto.ticketbooking.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -28,6 +29,7 @@ public class SeatBooking {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "booking_id", nullable = false)
+    @JsonIgnoreProperties({"seatBookings"})
     private Booking booking;
 
     public SeatBooking() {
